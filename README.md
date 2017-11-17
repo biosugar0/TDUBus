@@ -1,2 +1,3 @@
 # TDUBus
-Get Bus Time Schedule of TDU
+
+A package for getting bus timetable of TDU
