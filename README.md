@@ -4,6 +4,8 @@ version:1.0
 
 A package for getting bus timetable of TDU
 
+test:2018-01-31
+
 ## Function
 
 ### GetTimeSchedules()
