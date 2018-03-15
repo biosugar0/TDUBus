@@ -8,16 +8,16 @@
   version = "v1.3.0"
 
 [[projects]]
-  branch = "master"
   name = "github.com/andybalholm/cascadia"
   packages = ["."]
-  revision = "349dd0209470eabd9514242c688c403c0926d266"
+  revision = "901648c87902174f774fac311d7f176f8647bdaa"
+  version = "v1.0.0"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/net"
   packages = ["html","html/atom"]
-  revision = "0ed95abb35c445290478a5348a7b38bb154135fd"
+  revision = "e0c57d8f86c17f0724497efcb3bc617e82834821"
 
 [solve-meta]
   analyzer-name = "dep"
