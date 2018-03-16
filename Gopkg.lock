@@ -14,6 +14,12 @@
   version = "v1.0.0"
 
 [[projects]]
+  name = "github.com/yut-kt/goholiday"
+  packages = [".","config","nholidays"]
+  revision = "8085670e50d91de9c74352681ecb18429d77f93d"
+  version = "0.1.6"
+
+[[projects]]
   branch = "master"
   name = "golang.org/x/net"
   packages = ["html","html/atom"]
@@ -22,6 +28,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "6ffef5149d105304a8519eb7aa7ccae927da2ab2aa94fda1ffd5504d69c13b71"
+  inputs-digest = "6a1f9ab9f264cfe4287542c635b06aa8a6fe32a1e25c4b8451505e2b2c335f5e"
   solver-name = "gps-cdcl"
   solver-version = 1

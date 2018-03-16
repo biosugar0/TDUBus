@@ -3,7 +3,10 @@ package TDUBus
 import (
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
+	"github.com/yut-kt/goholiday"
+	"strconv"
 	"strings"
+	"time"
 )
 
 type BusTimes struct {
@@ -15,6 +18,70 @@ type Schedule struct {
 	Kitasakado map[string][]string
 	Kumagaya   map[string][]string
 	Kounosu    map[string][]string
+}
+
+type Cli struct {
+}
+
+func (c *Cli) NextDown(station string) ([]string, []string) {
+	//	timetable := GetTimeSchedules()
+	// 祝日は判定せずに、両方出す。
+	timetables := GetTimeSchedules()
+	now := time.Now()
+	day := fmt.Sprint(now.Weekday())
+	result := []string{}
+	vacationtime := timetables[2].Down
+	vacationresult := next(vacationtime, now, station)
+	if goholiday.IsHoliday(now) {
+		return nil, nil
+	} else if day == "Saturday" {
+		timetable := timetables[1].Down
+		result = next(timetable, now, station)
+	} else {
+		timetable := timetables[0].Down
+		result = next(timetable, now, station)
+	}
+	return result, vacationresult
+}
+
+func getnextTime(result []string, times map[string][]string, now time.Time) []string {
+	for {
+		hour := fmt.Sprint(now.Hour())
+		min := int(now.Minute())
+		for _, value := range times[hour] {
+			b, _ := strconv.Atoi(value)
+			if b > min {
+				result = append(result, fmt.Sprintf("%v時%v分", hour, b))
+			}
+			if len(result) == 3 {
+				return result
+			}
+		}
+		if hour == "21" {
+			return result
+		}
+		if len(result) < 3 {
+			now = now.Add(time.Duration(1) * time.Hour)
+		}
+	}
+}
+
+func next(timetable Schedule, now time.Time, station string) []string {
+	result := []string{}
+	if station == "takasaka" {
+		bustime := timetable.Takasaka
+		result = getnextTime(result, bustime, now)
+	} else if station == "kitasakado" {
+		bustime := timetable.Kitasakado
+		result = getnextTime(result, bustime, now)
+	} else if station == "kumagaya" {
+		bustime := timetable.Kumagaya
+		result = getnextTime(result, bustime, now)
+	} else if station == "kounosu" {
+		bustime := timetable.Kounosu
+		result = getnextTime(result, bustime, now)
+	}
+	return result
 }
 
 func GetTimeSchedules() []BusTimes {
