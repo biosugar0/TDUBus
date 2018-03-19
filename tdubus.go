@@ -47,7 +47,11 @@ func (c *Cli) NextDown(station string) ([]string, []string) {
 func getnextTime(result []string, times map[string][]string, now time.Time) []string {
 	for {
 		hour := fmt.Sprint(now.Hour())
+		now_hour, _ := strconv.Atoi(hour)
 		min := int(now.Minute())
+		if now_hour > 21 {
+			return result
+		}
 		for _, value := range times[hour] {
 			b, _ := strconv.Atoi(value)
 			if b > min {
@@ -56,9 +60,6 @@ func getnextTime(result []string, times map[string][]string, now time.Time) []st
 			if len(result) == 3 {
 				return result
 			}
-		}
-		if hour == "21" {
-			return result
 		}
 		if len(result) < 3 {
 			now = now.Add(time.Duration(1) * time.Hour)
