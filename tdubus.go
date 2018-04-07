@@ -32,7 +32,7 @@ func (c *Cli) NextDown(station string) ([]string, []string) {
 	result := []string{}
 	vacationtime := timetables[2].Down
 	vacationresult := next(vacationtime, now, station)
-	if goholiday.IsHoliday(now) {
+	if goholiday.IsNationalHoliday(now) {
 		return nil, nil
 	} else if day == "Saturday" {
 		timetable := timetables[1].Down
