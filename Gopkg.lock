@@ -2,32 +2,50 @@
 
 
 [[projects]]
+  digest = "1:439bfb51db599cd80766736b93b3d10e9314361197ada0b1209a51627a00ccd5"
   name = "github.com/PuerkitoBio/goquery"
   packages = ["."]
-  revision = "a86ea073017a6beddef78c8659e7224e8ca634b0"
-  version = "v1.4.0"
+  pruneopts = ""
+  revision = "2d2796f41742ece03e8086188fa4db16a3a0b458"
+  version = "v1.5.0"
 
 [[projects]]
+  digest = "1:e3726ad6f38f710e84c8dcd0e830014de6eaeea81f28d91ae898afecc078479a"
   name = "github.com/andybalholm/cascadia"
   packages = ["."]
+  pruneopts = ""
   revision = "901648c87902174f774fac311d7f176f8647bdaa"
   version = "v1.0.0"
 
 [[projects]]
+  digest = "1:87afbb5f7e2b8e03cb280e24d662a702c48e794dfb4f66ec6b9f09443e6f3143"
   name = "github.com/yut-kt/goholiday"
-  packages = [".","config","nholidays"]
+  packages = [
+    ".",
+    "config",
+    "nholidays",
+  ]
+  pruneopts = ""
   revision = "8085670e50d91de9c74352681ecb18429d77f93d"
   version = "0.1.6"
 
 [[projects]]
-  branch = "master"
+  branch = "release-branch.go1.10"
+  digest = "1:57cdbf612d6928a01850051b5c09972262244ae131a40dfea4c37fd525742db5"
   name = "golang.org/x/net"
-  packages = ["html","html/atom"]
-  revision = "61147c48b25b599e5b561d2e9c4f3e1ef489ca41"
+  packages = [
+    "html",
+    "html/atom",
+  ]
+  pruneopts = ""
+  revision = "0ed95abb35c445290478a5348a7b38bb154135fd"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "6a1f9ab9f264cfe4287542c635b06aa8a6fe32a1e25c4b8451505e2b2c335f5e"
+  input-imports = [
+    "github.com/PuerkitoBio/goquery",
+    "github.com/yut-kt/goholiday",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
